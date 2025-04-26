@@ -25,6 +25,11 @@ chmod +x install-drupal.sh
 
 Si no pasas ningún nombre, usará `drupalcms`.
 
+Si usas la bandera `-f` o `--full` realizará una instalación con un nombre de sitio por defecto, usuario y password `admin` con el fin de no tener necesidad de hacerlo desde la interfaz web (aún más rápido el despliegue).
+
+```bash
+./install-drupal.sh testCMS -f
+```
 ---
 
 ## 🚦 Comandos útiles
