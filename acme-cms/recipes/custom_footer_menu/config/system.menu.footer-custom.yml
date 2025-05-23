@@ -1,0 +1,8 @@
+uuid: e592a89b-09af-4dad-9513-c68caa2d3b5e
+langcode: en
+status: true
+dependencies: {  }
+id: footer-custom
+label: 'Menu Blog'
+description: 'A custom footer menu created via recipe.'
+locked: false

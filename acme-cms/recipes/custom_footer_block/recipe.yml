@@ -1,0 +1,14 @@
+name: 'Custom Footer Block'
+description: 'Places the custom footer menu block.'
+
+recipes:
+  - custom_footer_menu
+
+install:
+  - block
+
+config:
+  strict: false
+  import:
+    block:
+      - block.block.drupal_cms_olivero_menublog.yml

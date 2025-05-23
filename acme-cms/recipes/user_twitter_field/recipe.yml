@@ -1,0 +1,13 @@
+name: 'User Twitter Field'
+description: 'Adds a Twitter username field to user profiles.'
+
+install:
+  - field
+  - text
+
+config:
+  strict: false
+  import:
+    user:
+      - field.storage.user.field_twitter
+      - field.field.user.user.field_twitter

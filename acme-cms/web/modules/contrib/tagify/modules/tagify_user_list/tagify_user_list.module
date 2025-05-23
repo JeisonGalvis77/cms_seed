@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Provides integration with Tagify.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Gets image fields from user entity.
+ *
+ * @param bool $include_empty
+ *   Whether to include an empty option in the returned list.
+ */
+function _tagify_user_list_user_image_options(bool $include_empty = TRUE) {
+  $options = [];
+  /** @var Drupal\Core\Entity\EntityFieldManagerInterface $field_manager */
+  $field_manager = Drupal::service('entity_field.manager');
+  // Get all field definitions for the user entity.
+  $fields = $field_manager->getFieldDefinitions('user', 'user');
+
+  if ($include_empty) {
+    $options['user_picture'] = t('Picture');
+  }
+
+  foreach ($fields as $field_name => $field_definition) {
+    // Skip base fields.
+    if (!$field_definition instanceof FieldConfig) {
+      continue;
+    }
+
+    $type = $field_definition->getType();
+    // Check for media or image field types.
+    if ($type === 'image' || $type === 'entity_reference') {
+      if ($type === 'entity_reference') {
+        $target_type = $field_definition->getSetting('target_type');
+        if ($target_type !== 'media') {
+          continue;
+        }
+      }
+
+      $options[$field_name] = $field_definition->getLabel();
+    }
+  }
+
+  if (empty($options)) {
+    $options[''] = t('No image or media fields found');
+  }
+
+  return $options;
+}
+
+/**
+ * Gets the image path from a user entity's image field.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The user entity from which the image path is retrieved.
+ * @param string $image
+ *   The name of the image field in the user entity.
+ * @param string $image_style
+ *   The image style to be applied to the image.
+ *
+ * @return string
+ *   The URL of the styled image or an empty string if not available.
+ */
+function _tagify_user_list_image_path(EntityInterface $entity, string $image, string $image_style) {
+  // Get image path.
+  $image_path = '';
+  /** @var Drupal\Core\Entity\FieldableEntityInterface $entity */
+  if ($entity->hasField($image) && !$entity->get($image)->isEmpty()) {
+    /** @var Drupal\file\FileInterface $user_image */
+    $user_image = $entity->get($image)->entity;
+    /** @var Drupal\image\Entity\ImageStyle $style */
+    $style = ImageStyle::load($image_style);
+    $image_path = ($user_image->getEntityTypeId() === 'media')
+      ? $style->buildUrl($user_image->field_media_image->entity->getFileUri())
+      : $style->buildUrl($user_image->getFileUri());
+  }
+
+  return $image_path;
+}

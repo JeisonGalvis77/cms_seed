@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - text
+id: user.field_twitter
+field_name: field_twitter
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: text
+locked: false
+cardinality: 1
+translatable: false
+persist_with_no_fields: false
+custom_storage: false

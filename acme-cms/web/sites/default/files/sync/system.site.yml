@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: HlN7eAN2N4JIHsYv56V4E7sqC9bS609KwvGFjyD_mgk
+langcode: en
+uuid: c2073531-7a0e-4c08-a844-f9ffcc031599
+name: 'My Drupal CMS site'
+mail: jgalvis@seedem.co
+slogan: ''
+page:
+  403: /user/login
+  404: ''
+  front: /node/2
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: null

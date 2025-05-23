@@ -1,0 +1,25 @@
+uuid: 11637376-9bae-488b-98f2-cad08eed1415
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-custom
+  module:
+    - system
+  theme:
+    - drupal_cms_olivero
+id: drupal_cms_olivero_menublog
+theme: drupal_cms_olivero
+region: footer_top
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-custom'
+settings:
+  id: 'system_menu_block:footer-custom'
+  label: 'Menu Blog'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }
