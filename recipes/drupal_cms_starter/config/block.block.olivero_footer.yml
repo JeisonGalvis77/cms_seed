@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - system.menu.footer
+  module:
+    - system
   theme:
     - olivero
 id: olivero_footer
