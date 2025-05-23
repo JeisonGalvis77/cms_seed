@@ -27,7 +27,6 @@
 *.iml
 *.ipr
 *.iws
-.idea/
 
 # Incluir lo importante
 !composer.lock
