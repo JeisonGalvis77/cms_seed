@@ -1,5 +1,0 @@
-ai_content_suggestions_js:
-  js:
-    js/ai_content_suggestions.js : {}
-  dependencies:
-    - core/jquery
