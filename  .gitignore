@@ -1,0 +1,40 @@
+# Ignorar dependencias
+/vendor/
+.web/
+/.ddev/
+.idea/
+*.log
+
+# Ignorar config local y archivos temporales
+/sites/*/files
+/sites/*/private
+/sites/*/settings.local.php
+/sites/*/services.local.yml
+/web/sites/default/settings.local.php
+/web/sites/default/files/
+*.swp
+*.bak
+*.tmp
+
+# Ignorar core y contrib si estás usando Composer
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+
+# Ignorar config de IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Incluir lo importante
+!composer.lock
+!composer.json
+!install-drupalcms.sh
+!.editorconfig
+!web/modules/custom/
+!web/themes/custom/
+!web/profiles/custom/
+!config/
