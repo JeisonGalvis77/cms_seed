@@ -1,11 +1,9 @@
 name: 'Custom Footer Menu'
 description: 'Creates a separate footer menu and places it as a block.'
 
-recipes:
-  - drupal_cms_blog
-
 install:
   - menu_ui
+  - menu_link_content
 
 config:
   strict: false
@@ -13,5 +11,4 @@ config:
     menu_ui:
       - system.menu.footer_custom
     menu_link_content:
-      - menu_link_content.privacy_policy
-      - menu_link_content.terms_of_use
+      - menu_link_content.menu_link_content.terms_of_use
